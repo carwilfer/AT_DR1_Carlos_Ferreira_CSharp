@@ -14,12 +14,5 @@ namespace ATCSharpAniversario.Dados
         public abstract IEnumerable<Pessoa> BuscarTodosOsAniversariantes(DateTime dataNascimento);
         public abstract Pessoa BuscarAniversariantesPelo(string cpf);
         public abstract void Editar(Pessoa pessoa);
-        /*
-        public abstract void DeletaECria(List<Pessoa> listaPessoas);
-        public abstract bool PessoaExistente(Pessoa pessoa);
-        public abstract Pessoa BuscarPessoaPorId(int id);
-        public abstract string RecebeArquivo();
-        public abstract void CriarPessoa(Pessoa pessoa);
-        */
     }
 }
