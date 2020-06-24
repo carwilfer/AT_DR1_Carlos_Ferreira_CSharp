@@ -154,6 +154,15 @@ namespace ATCSharpAniversario.Cli
             string nomeAlterado = Console.ReadLine();
             gente.Nome = nomeAlterado;
 
+            EscreverNaTela("Favor alterar o Sobrenome: ");
+            string SobreNomeAlterado = Console.ReadLine();
+            gente.SobreNome = SobreNomeAlterado;
+
+            DateTime niver;
+            EscreverNaTela("Entre com a nova data de Nascimento no formato: DD/MM/YYYY");
+            niver = DateTime.Parse(Console.ReadLine());
+            gente.DataNascimento = niver;
+
             bdPolimorfismo.Editar(gente);
 
             MenuPrincipal();
@@ -165,7 +174,10 @@ namespace ATCSharpAniversario.Cli
             EscreverNaTela("Entre com o CPF do Aniversariuante: ");
             string cpf = Console.ReadLine();
 
+
             var gente = bdPolimorfismo.BuscarAniversariantesPelo(cpf);
+            EscreverNaTela(" Nome: " + gente.Nome + " " + " Sobrenome: " + gente.SobreNome + " Foi excluido.");
+
             if (gente == null)
             {
                 EscreverNaTela("Cpf digitando incorretamente ou funcionario não encontrado");
@@ -257,7 +269,7 @@ namespace ATCSharpAniversario.Cli
                 EscreverNaTela("Feliz aniversário!");
                 foreach (var gente in aniversarianteFiltradosPelaDataNascimento)
                 {
-                    EscreverNaTela(gente.Nome);
+                    EscreverNaTela(gente.Nome + " " + gente.SobreNome);
                 }
             }
         }

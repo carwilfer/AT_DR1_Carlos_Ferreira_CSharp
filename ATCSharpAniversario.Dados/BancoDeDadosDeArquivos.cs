@@ -14,7 +14,12 @@ namespace ATCSharpAniversario.Dados
             var pastaDesktop = Environment.SpecialFolder.Desktop;
             string localDaPastaDesktop = Environment.GetFolderPath(pastaDesktop);
             string nomeDoArquivo = @"\dadosDosAniversariantes.txt";
-            return localDaPastaDesktop + nomeDoArquivo;
+           
+            if (!(File.Exists(localDaPastaDesktop + nomeDoArquivo)))
+            {
+               File.Create(localDaPastaDesktop + nomeDoArquivo).Close();
+            }
+                return localDaPastaDesktop + nomeDoArquivo;
         }
         public override void Salvar(Pessoa pessoa)
         {
@@ -69,6 +74,20 @@ namespace ATCSharpAniversario.Dados
         }
         public override void Excluir(Pessoa pessoa)
         {
+            {
+                var todasPessoas = BuscarTodosOsAniversariantes();
+                List<Pessoa> listaNova = new List<Pessoa>();
+
+                foreach (var pessoaExcluindo in todasPessoas)
+                {
+                    if (pessoa.Cpf != pessoaExcluindo.Cpf)
+                    {
+                        listaNova.Add(pessoaExcluindo);
+                    }
+                }
+
+                RecriarArquivo(listaNova);
+            }
 
         }
         public override IEnumerable<Pessoa> BuscarTodosOsAniversariantes(string nome)

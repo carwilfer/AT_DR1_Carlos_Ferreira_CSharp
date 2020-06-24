@@ -6,7 +6,7 @@ namespace ATCSharpAniversario.Dominio
 {
     public class Pessoa
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Nome { get; set; }
         public string SobreNome { get; set; }
         public string Cpf { get; set; }
@@ -31,6 +31,16 @@ namespace ATCSharpAniversario.Dominio
             Cpf = cpf;
             DataNascimento = dataNascimento;
         }
+
+        public Pessoa(Guid id, string nome, string sobreNome, string cpf, DateTime dataNascimento)
+        {
+            Id = id;
+            Nome = nome;
+            SobreNome = sobreNome;
+            Cpf = cpf;
+            DataNascimento = dataNascimento;
+        }
+
 
         public string NomeCompleto()
         {

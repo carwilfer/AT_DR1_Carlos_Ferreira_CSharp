@@ -53,12 +53,10 @@ namespace ATCSharpAniversario.Dados
         {
             return pessoasCadastrada.Find(gente => gente.Cpf == cpf);
         }
-
         public override void Excluir(Pessoa pessoa)
         {
             pessoasCadastrada.Remove(pessoa);
         }
-
         public override void Editar(Pessoa pessoa)
         {
             throw new NotImplementedException();
